@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Librar.io</title>
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
+    <script type="text/javascript" src="requests.js"></script>
+</head>
+<body>
+    <div class="vertical_line_left"></div>
+    <div class="vertical_line_right"></div>
+
+    <h1>Welcome to the next-gen Library organization initiation program.</h1>
+
+    <div class="search">
+        <h2>Looking for a book?</h2>
+        <form action="http://localhost:8080/search" method="POST">
+            <label for="input_name"></label> <input type="text" id="input_name">
+            <input type="submit" value="Search">
+        </form>
+
+    </div>
+
+    <div class="new_book">
+        <input type="button" value="Got a new book?" style="font-style: italic; height: 35px" onclick="window.location.href='./pages/new-book.html'">
+    </div>
+
+    <div class="test-all-books">
+        <input type="button" value="TEST -- Print all books" onclick="getData()">
+    </div>
+
+    <ul id="result-list" style="text-align: center" class="result-list">
+
+    </ul>
+
+</body>
+</html>

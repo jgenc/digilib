@@ -36,7 +36,9 @@ h1 {
     overflow: hidden;
 }
 
-.new_book {
+.new_book,
+.test-all-books,
+.result-list {
     width: 20%;
     background-color: bisque;
     display: flow;
@@ -46,4 +48,32 @@ h1 {
     border: 1px solid black;
     padding: 15px;
     overflow: hidden;
+}
+
+.result-list {
+    width: fit-content;
+}
+
+.book-result {
+    background-color: beige;
+    display: flow;
+    text-align: center;
+    margin: auto;
+    margin-top: 1%;
+    border: 1px solid black;
+    padding: 15px;
+    overflow: hidden;
+}
+
+/* Not sure how to do this, this also exists in ./pages/new-book.html */
+table {
+    border-collapse: collapse;
+    border: 2px solid black;
+    letter-spacing: 1px;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px 20px;
+    text-align: center;
 }
