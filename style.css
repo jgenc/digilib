@@ -1,0 +1,49 @@
+body {
+    background-color: blanchedalmond;
+}
+
+h1 {
+    text-align: center;
+}
+
+.vertical_line_left {
+    border-left: 4px solid darkgray;
+    height: 98%;
+    position: absolute;
+    left: 10%;
+    /*left: 50%;*/
+    /*margin-left: -3px;*/
+    top: 10%;
+}
+
+.vertical_line_right {
+    border-left: 4px solid darkgray;
+    height: 98%;
+    position: absolute;
+    right: 10%;
+    top: 10%;
+}
+
+.search {
+    width: 20%;
+    line-height: 25px;
+    background-color: bisque;
+    display: flow;
+    text-align: center;
+    margin: auto;
+    border: 1px solid black;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.new_book {
+    width: 20%;
+    background-color: bisque;
+    display: flow;
+    text-align: center;
+    margin: auto;
+    margin-top: 1%;
+    border: 1px solid black;
+    padding: 15px;
+    overflow: hidden;
+}
