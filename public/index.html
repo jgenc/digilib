@@ -14,7 +14,7 @@
 
     <div class="search">
         <h2>Looking for a book?</h2>
-        <form action="query.html">
+        <form action="http://192.168.1.110:8080/books/search">
 <!--            TODO: Add form checking-->
             <input required type="text" name="q" id="user-q">
             <input type="submit" value="Search">
@@ -22,7 +22,9 @@
     </div>
 
     <div class="new_book">
-        <input type="button" value="Got a new book?" style="font-style: italic; height: 35px" onclick="window.location.href='books/new.html'">
+        <form action="http://192.168.1.110:8080/books/new" method="get">
+            <input type="submit" value="Got a new book?" style="font-style: italic; height: 35px">
+        </form>
     </div>
 
 <!--    Returns all books-->

@@ -1,0 +1,23 @@
+html
+    head
+        title Searched for 
+    body
+        h1= 'Search results'
+        ul
+            for book in searchResult
+                div(
+                    class='book-result'
+                )
+                    table
+                        tr
+                            td= 'Author'
+                            td= book.author
+                        tr
+                            td= 'Title'
+                            td= book.title
+                        tr
+                            td= 'Genre'
+                            td= book.genre
+                        tr
+                            td= 'Price'
+                            td= book.price

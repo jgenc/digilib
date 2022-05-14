@@ -50,14 +50,11 @@ function createTableHTML(title, author, genre, price) {
 
 async function getSearchBooks () {
     document.getElementById('site-title').innerText += location.search.slice(3)
-    const list = document.getElementById('result-list');
     // location.search returns q?=<>
     fetch('http://192.168.1.110:8080/books/search' + location.search)
         .then(response => response.json())
         .then(data => {
-            let title = document.getElementById('site-title');
-            title.innerText;
-
+            const list = document.getElementById('result-list');
             for (const book of data) {
                 let div = document.createElement('div');
                 div.className = 'book-result'
@@ -71,4 +68,19 @@ async function getSearchBooks () {
                 list.appendChild(li)
             }
         })
+}
+
+function showInput() {
+    const ul = document.createElement('ul');
+    ul.style = 'text:align center;'
+    ul.className = 'result-list';
+
+    const div = document.createElement('div');
+    div.className = 'book-result';
+
+    const table = createTableHTML(document.getElementById('author').innerText, document.getElementById('title').innerText, document.getElementById('genre').innerText, document.getElementById('price').innerText);
+
+    div.appendChild(table);
+
+    ul.appendChild(div);
 }
