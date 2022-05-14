@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <form name="newbook" action="http://localhost:8080/books" method="post">
+    <form name="newbook" action="http://192.168.1.110:8080/books" method="post">
         <div class="new_book">
             <table style="display: table; border: 1px solid black; border-collapse: collapse">
                 <tr>
@@ -41,7 +41,7 @@
                     <!--TODO: Should be dropdown menu-->
                     <td> <label for="genre"> Genre </label> </td>
                     <td> <select required id="genre" name="genre" style="width: 100%;">
-                        <option name="default" selected hidden disabled> Select an Genre </option>
+                        <option name="default" value="" selected hidden disabled> Select an Genre </option>
                         <option name="science"> Science </option>
                         <option name="fiction"> Fiction </option>
                         <option name="satire"> Satire </option>
