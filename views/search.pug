@@ -1,13 +1,36 @@
 html
     head
-        title Searched for 
-    body
+        title Searched for
+        style.
+            td {
+                border: 1px solid black;
+                padding: 10px 20px;
+                letter-spacing: 1px;
+            }
+            table {
+                border-collapse: collapse;
+                border: 2px solid black;
+                letter-spacing: 1px;
+            }
+            .book-result {
+                background-color: beige;
+                display: flow;
+                text-align: center;
+                margin: auto;
+                margin-top: 1%;
+                border: 1px solid black;
+                padding: 15px;
+                overflow: hidden;
+            }
+            ul {
+                width: fit-content;
+            }
+
+body
         h1= 'Search results'
         ul
             for book in searchResult
-                div(
-                    class='book-result'
-                )
+                div(class='book-result')
                     table
                         tr
                             td= 'Author'

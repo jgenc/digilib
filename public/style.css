@@ -1,5 +1,5 @@
 body {
-    background-color: blanchedalmond;
+    background-color: #d7caff;
 }
 
 h1 {
@@ -58,7 +58,7 @@ h1 {
 }
 
 .book-result {
-    background-color: beige;
+    background-color: #d7caff;
     display: flow;
     text-align: center;
     margin: auto;
