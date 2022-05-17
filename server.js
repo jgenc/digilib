@@ -41,7 +41,8 @@ app.get('/books/search', async (req, res) => {
             searchResult.push(result);
         }
 
-        res.render('search.pug', {"searchResult": searchResult});
+        // FIXME: searchTerm does not display on title.
+        res.render('search.pug', {"searchResult": searchResult, "searchTerm": req.query.q.toString()});
     } catch (err) {
         throw err;
     }
@@ -68,6 +69,7 @@ app.post('/books/new', async (req, res) => {
         throw err;
     }
 });
+
 
 // ==============================
 //          Temporary

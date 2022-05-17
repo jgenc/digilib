@@ -1,7 +1,12 @@
 html
     head
-        title Searched for
+        title= 'Searched for ' + searchTerm
         style.
+            ul {
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
             td {
                 border: 1px solid black;
                 padding: 10px 20px;
@@ -16,31 +21,43 @@ html
                 background-color: beige;
                 display: flow;
                 text-align: center;
-                margin: auto;
+                /*margin: auto;*/
                 margin-top: 1%;
                 border: 1px solid black;
                 padding: 15px;
                 overflow: hidden;
-            }
-            ul {
                 width: fit-content;
+            }
+            footer {
+                margin-left: auto;
+                margin-right: auto;
+                width: 10em;
+            }
+            .center-div {
+                height: 100%;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
             }
 
 body
-        h1= 'Search results'
-        ul
-            for book in searchResult
-                div(class='book-result')
-                    table
-                        tr
-                            td= 'Author'
-                            td= book.author
-                        tr
-                            td= 'Title'
-                            td= book.title
-                        tr
-                            td= 'Genre'
-                            td= book.genre
-                        tr
-                            td= 'Price'
-                            td= book.price
+        div(class='center-div')
+            ul
+                h1= 'Search results'
+                for book in searchResult
+                    div(class='book-result')
+                        table
+                            tr
+                                td= 'Author'
+                                td= book.author
+                            tr
+                                td= 'Title'
+                                td= book.title
+                            tr
+                                td= 'Genre'
+                                td= book.genre
+                            tr
+                                td= 'Price'
+                                td= book.price
+                footer
+                    h2(onclick="window.history.go(-1);")= 'Go back ↺'
