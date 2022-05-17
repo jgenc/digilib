@@ -2,19 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Librar.io</title>
+    <title>Library WebDev Project</title>
     <link rel="stylesheet" type="text/css" href="style.css" media="screen">
     <script type="text/javascript" src="requests.js"></script>
 </head>
 <body>
-    <div class="vertical_line_left"></div>
-    <div class="vertical_line_right"></div>
 
-    <h1>Welcome to the next-gen Library organization initiation program.</h1>
+<!-- FIXME: Maybe add some borders on the left and the right side of the side? for now I will not
+            add anything though
+-->
+<!--    <div class="vertical_line_left"></div>-->
+
+    <h1>Header</h1>
 
     <div class="search">
         <h2>Looking for a book?</h2>
-        <form action="http://192.168.1.110:8080/books/search">
+        <form action="http://localhost:8080/books/search">
 <!--            TODO: Add form checking-->
             <input required type="text" name="q" id="user-q">
             <input type="submit" value="Search">
@@ -22,12 +25,14 @@
     </div>
 
     <div class="new_book">
-        <form action="http://192.168.1.110:8080/books/new" method="get">
+        <form action="http://localhost:8080/books/new" method="get">
             <input type="submit" value="Got a new book?" style="font-style: italic; height: 35px">
         </form>
     </div>
 
-<!--    Returns all books-->
+<!--    <div class="vertical_line_right"></div>-->
+
+    <!--    Returns all books-->
 <!--    <div class="test-all-books">-->
 <!--        <input type="button" value="TEST &#45;&#45; Print all books" onclick="getAllBooks()">-->
 <!--    </div>-->
