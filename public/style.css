@@ -1,83 +1,104 @@
+:root {
+    --dark-olive-green: #606c38ff;
+    --kombu-green: #283618ff;
+    --cornsilk: #fefae0ff;
+    --earth-yellow: #dda15eff;
+    --liver-dogs: #bc6c25ff;
+}
+
+
+h1,
+h2,
+p,
+label {
+    color: var(--dark-olive-green)
+}
+
+strong {
+    color: var(--kombu-green)
+}
+
+input {
+    color: var(--kombu-green)
+}
+
+a {
+    text-decoration: none;
+    color: var(--liver-dogs);
+}
+
 body {
-    background-color: #d7caff;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+    background: cornsilk;
+    display: grid;
+    place-items: center;
+    font-family: 'PT Serif', serif;
+    font-size: xx-large;
 }
 
-h1 {
-    text-align: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
 }
 
-.vertical_line_left {
-    border-left: 4px solid darkgray;
-    height: 98%;
+#title {
+    display: grid;
+    place-items: center;
+}
+
+#options {
+    font-size: medium;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 100px;
+    padding-bottom: 100px;
+    flex: 1 0 auto;
+    justify-items: center;
+}
+
+#search {
+    display: grid;
+    grid-template-rows: max-content;
+}
+
+#add {
+    display: grid;
+    grid-template-rows: max-content;
+    justify-items: center;
+}
+
+#add form table select {
+    width: 100%;
+}
+
+#add form table input[type="submit"] {
+    width: 50%;
+}
+
+.footer {
+    font-size: small;
     position: absolute;
-    left: 10%;
-    /*left: 50%;*/
-    /*margin-left: -3px;*/
-    top: 10%;
+    bottom: 0;
+    height: 4.5rem;
+    width: 100%;
+
+    background: var(--earth-yellow);
+
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 50px;
+    justify-items: center;
 }
 
-.vertical_line_right {
-    border-left: 4px solid darkgray;
-    height: 98%;
-    position: absolute;
-    right: 10%;
-    top: 10%;
+.footer h3 {
+    color: var(--cornsilk);
 }
 
-.search {
-    width: 20%;
-    line-height: 25px;
-    background-color: bisque;
-    display: flow;
-    text-align: center;
-    margin: auto;
-    border: 1px solid black;
-    padding: 10px;
-    overflow: hidden;
-}
-
-.new_book,
-.result-list {
-    width: 20%  ;
-    background-color: bisque;
-    display: flow;
-    text-align: center;
-    margin: auto;
-    margin-top: 1%;
-    border: 1px solid black;
-    padding: 15px;
-    overflow: auto;
-    float: inside;
-}
-
-.new_book {
-    width: fit-content;
-}
-
-.result-list {
-    width: fit-content;
-}
-
-.book-result {
-    background-color: #d7caff;
-    display: flow;
-    text-align: center;
-    margin: auto;
-    margin-top: 1%;
-    border: 1px solid black;
-    padding: 15px;
-    overflow: hidden;
-}
-
-/* Not sure how to do this, this also exists in ./books/new.html */
-table {
-    border-collapse: collapse;
-    border: 2px solid black;
-    letter-spacing: 1px;
-}
-
-td {
-    border: 1px solid black;
-    padding: 10px 20px;
-    text-align: center;
+.footer a {
+    color: var(--dark-olive-green)
 }

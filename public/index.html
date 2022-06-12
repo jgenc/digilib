@@ -1,42 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Library WebDev Project</title>
-    <link rel="stylesheet" type="text/css" href="style.css" media="screen">
-    <script type="text/javascript" src="requests.js"></script>
+    <title>
+        Digital Library
+    </title>
+    <link rel="stylesheet" href="style.css">
+    <!-- https://fonts.google.com/specimen/PT+Serif?category=Serif -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+
+    <script>
+        function eventListeners() {
+            // When user clicks 'Searching for a book?' the system will search for the
+            // book the user wants to see with a LIKE sql statement
+            let aSearch = document.getElementById('a-search');
+            let searchBookForm = document.getElementById('search-book-form');
+            aSearch.addEventListener('click', () => {
+                searchBookForm.hidden = searchBookForm.hidden ? false : true;
+                searchBookForm.action = `http://${location.host}/books/search`;
+            });
+
+            // When user clicks 'Add your book' the form will appear and when the user
+            // clicks it again, it will dissapear
+            let aAdd = document.getElementById('a-add');
+            let addBookForm = document.getElementById('add-book-form');
+            aAdd.addEventListener('click', () => {
+                addBookForm.hidden = addBookForm.hidden ? false : true;
+                addBookForm.action = `http://${location.host}/books`
+            });
+
+
+        }
+    </script>
 </head>
-<body>
 
-<!-- FIXME: Maybe add some borders on the left and the right side of the side? for now I will not
-            add anything though
--->
-<!--    <div class="vertical_line_left"></div>-->
+<body onload="eventListeners();">
+    <div class="container">
+        <h1 id="title">📙 Digital Library</h1>
 
-    <h1>Header</h1>
+        <div id="options">
+            <div id="search">
+                <h2> 🔍 <a href="#search" id="a-search">Searching for a book?</a> </h2>
+                <form hidden id="search-book-form" method="get">
+                    <input required type="text" name="q" placeholder="Search a book...">
+                    <input type="submit">
+                </form>
+            </div>
 
-    <div class="search">
-        <h2>Looking for a book?</h2>
-        <form action="http://localhost:8080/books/search">
-<!--            TODO: Add form checking-->
-            <input required type="text" name="q" id="user-q">
-            <input type="submit" value="Search">
-        </form>
+            <div id="add">
+                <h2> ➕ <a id="a-add" href="#add">Add your book</a> </h2>
+                <form hidden id="add-book-form" method="post">
+                    <div class="new_book">
+                        <table>
+                            <tr>
+                                <td> <label for="author"> Author </label> </td>
+                                <td>
+                                    <input type="text" id="author" name="author" placeholder="Enter the Author" required
+                                        maxlength="25">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <label for="title"> Title </label> </td>
+                                <td>
+                                    <input type="text" id="title" name="title" placeholder="Enter the Book's Title"
+                                        required maxlength="40">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <label for="genre"> Genre </label> </td>
+                                <td> <select required id="genre" name="genre">
+                                        <option name="default" value="" selected hidden disabled> Select an Genre
+                                        </option>
+                                        <option name="science"> Science </option>
+                                        <option name="fiction"> Fiction </option>
+                                        <option name="satire"> Satire </option>
+                                        <option name="drama"> Drama </option>
+                                        <option name="action"> Action </option>
+                                        <option name="adventure"> Adventure </option>
+                                        <option name="romance"> Romance </option>
+                                        <option name="mystery"> Mystery </option>
+                                        <option name="horror"> Horror </option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <label for="price"> Price </label> </td>
+                                <td> <input type="number" step="any" id="price" name="price"
+                                        placeholder="Enter the Book's price" required maxlength="10"></td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td colspan="2">
+                                    <input type="submit" onsubmit="">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+            <!-- <div id="browse">
+                <h2> 👓 <a href="#" onclick="">Browse</a> </h2>
+            </div> -->
+        </div>
     </div>
 
-    <div class="new_book">
-        <form action="http://localhost:8080/books/new" method="get">
-            <input type="submit" value="Got a new book?" style="font-style: italic; height: 35px">
-        </form>
+    <div class="footer">
+        <div id="footer-author">
+            <h3>Author: Jorgen Cani</h3>
+        </div>
+        <div id="footer-am">
+            <h3>AM: 22105</h3>
+        </div>
+        <div id="footer-github">
+            <h3>GitHub: <a href="https://github.com/325jgen">325jgen</a></h3>
+        </div>
     </div>
-
-<!--    <div class="vertical_line_right"></div>-->
-
-    <!--    Returns all books-->
-<!--    <div class="test-all-books">-->
-<!--        <input type="button" value="TEST &#45;&#45; Print all books" onclick="getAllBooks()">-->
-<!--    </div>-->
-
-
 </body>
+
+
+
 </html>

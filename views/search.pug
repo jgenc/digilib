@@ -1,15 +1,20 @@
 html
     head
+        link(rel="preconnect", href="https://fonts.googleapis.com")
+        link(rel="preconnect", href="https://fonts.googleapis.com", crossorigin)
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap")
         title= 'Searched for ' + searchTerm
         style.
-            ul {
-                margin-left: auto;
-                margin-right: auto;
-                width: 50%;
+            body {
+                background: #dda15eff;
+                font-family: 'PT Serif', serif;
+                display: grid;
+                place-items: center;
+                height: 100vh;
             }
             td {
                 border: 1px solid black;
-                padding: 10px 20px;
+                padding: 8px 20px;
                 letter-spacing: 1px;
             }
             table {
@@ -18,46 +23,46 @@ html
                 letter-spacing: 1px;
             }
             .book-result {
-                background-color: beige;
-                display: flow;
+                background-color: #fefae0ff;
+                display: flex;
+                flex-direction: column;
                 text-align: center;
-                /*margin: auto;*/
                 margin-top: 1%;
                 border: 1px solid black;
                 padding: 15px;
                 overflow: hidden;
-                width: fit-content;
+                width: 100%;
             }
             footer {
-                margin-left: auto;
-                margin-right: auto;
                 width: 10em;
             }
-            .center-div {
-                height: 100%;
-                width: 50%;
-                margin-left: auto;
-                margin-right: auto;
+            .container {
+                display: flex;
+                flex-direction: column;
+                height: 90vh;
+            }
+            h1, h4 {
+                color: #fefae0ff;
             }
 
-body
-        div(class='center-div')
-            ul
-                h1= 'Search results'
-                for book in searchResult
-                    div(class='book-result')
-                        table
-                            tr
-                                td= 'Author'
-                                td= book.author
-                            tr
-                                td= 'Title'
-                                td= book.title
-                            tr
-                                td= 'Genre'
-                                td= book.genre
-                            tr
-                                td= 'Price'
-                                td= book.price
-                footer
-                    h2(onclick="window.history.go(-1);")= 'Go back ↺'
+    body
+            div(class='container')
+                ul
+                    h1= '🕵️ Search results'
+                    for book in searchResult
+                        div(class='book-result')
+                            table
+                                tr
+                                    td= 'Author'
+                                    td= book.author
+                                tr
+                                    td= 'Title'
+                                    td= book.title
+                                tr
+                                    td= 'Genre'
+                                    td= book.genre
+                                tr
+                                    td= 'Price'
+                                    td= book.price
+                    footer
+                        h4(onclick="window.history.go(-1);")= 'Go back ↺'
