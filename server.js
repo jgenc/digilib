@@ -92,9 +92,9 @@ app.get('/books/search', async (req, res) => {
 //      Required API endpoints
 
 // Root website access
-// app.get('/', async (req, res) => {
-//     res.sendFile(path.join(__dirname + '/public/frontend.html'));
-// });
+app.get('/', async (req, res) => {
+    res.sendFile('index.html');
+});
 
 // Searching for books
 // Used when checkbox 'Result as JSON' is checked
