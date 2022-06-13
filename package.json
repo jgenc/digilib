@@ -1,6 +1,13 @@
 {
-  "name": "project-nodejs",
-  "version": "1.0.0",
+  "name": "diglib",
+  "version": "0.9.0",
+  "engines": {
+    "node": "16.x"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
     "better-sqlite3": "^7.5.3",
     "cors": "^2.8.5",
