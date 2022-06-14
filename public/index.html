@@ -17,23 +17,43 @@
         function eventListeners() {
             // When user clicks 'Searching for a book?' the system will search for the
             // book the user wants to see with a LIKE sql statement
+            // When user clicks 'Add your book' the form will appear and when the user
+            // clicks it again, it will dissapear
+
+            let aAdd = document.getElementById('a-add');
+            let addBookForm = document.getElementById('add-book-form');
             let aSearch = document.getElementById('a-search');
             let searchBookForm = document.getElementById('search-book-form');
+
+            let checkJson = document.getElementById('check-json');
+
             aSearch.addEventListener('click', () => {
+                // If search form is hidden, make it appear
                 searchBookForm.hidden = searchBookForm.hidden ? false : true;
+                // If add form is appeared, hide it
+                if (addBookForm.hidden === false) {
+                    addBookForm.hidden = true;
+                }
                 searchBookForm.action = `http://${location.host}/books/search`;
             });
 
-            // When user clicks 'Add your book' the form will appear and when the user
-            // clicks it again, it will dissapear
-            let aAdd = document.getElementById('a-add');
-            let addBookForm = document.getElementById('add-book-form');
             aAdd.addEventListener('click', () => {
+                // If add form is hidden, make it appear
                 addBookForm.hidden = addBookForm.hidden ? false : true;
+                // If search form is appeared, hide it
+                if (searchBookForm.hidden === false) {
+                    searchBookForm.hidden = true;
+                }
                 addBookForm.action = `http://${location.host}/books`
             });
 
-
+            checkJson.addEventListener('change', () => {
+                if (checkJson.checked) {
+                    searchBookForm.action = `http://${location.host}/books/`
+                } else {
+                    searchBookForm.action = `http://${location.host}/books/search`
+                }
+            })
         }
     </script>
 </head>
@@ -48,6 +68,9 @@
                 <form hidden id="search-book-form" method="get">
                     <input required type="text" name="q" placeholder="Search a book...">
                     <input type="submit">
+                    <br>
+                    <label for="check-json"> JSON </label>
+                    <input type="checkbox" id="check-json">
                 </form>
             </div>
 
@@ -121,7 +144,4 @@
         </div>
     </div>
 </body>
-
-
-
 </html>

@@ -41,8 +41,11 @@ html
                 flex-direction: column;
                 height: 90vh;
             }
-            h1, h4 {
+            h1, h4, a {
                 color: #fefae0ff;
+            }
+            a {
+                text-decoration: none;
             }
 
     body
@@ -52,6 +55,9 @@ html
                     for book in searchResult
                         div(class='book-result')
                             table
+                                tr
+                                    td= 'ID'
+                                    td= book.id
                                 tr
                                     td= 'Author'
                                     td= book.author
@@ -65,4 +71,5 @@ html
                                     td= 'Price'
                                     td= book.price
                     footer
-                        h4(onclick="window.history.go(-1);")= 'Go back ↺'
+                        h4
+                            a(href="#", onclick="window.history.go(-1);")= 'Go back ↺'

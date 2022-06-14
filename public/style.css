@@ -60,12 +60,7 @@ body {
     justify-items: center;
 }
 
-#search {
-    display: grid;
-    grid-template-rows: max-content;
-}
-
-#add {
+#search, #add {
     display: grid;
     grid-template-rows: max-content;
     justify-items: center;

@@ -1,26 +1,22 @@
 // Requirements
-const express = require('express');
-const db = require('./sqllitedb').db;
-// const cors = require('cors');
+const express = require('express')
+const db = require('./sqllitedb').db
 
-const app = express();
-const port = 54982;
+const app = express()
+const PORT = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 // Cannot use requests.js because of cors, installing it
 
 let { response } = require("express");
 const path = require("path");
-// app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(bodyParser.json())
+    .use(bodyParser.urlencoded({ extended: true }))
+    .use(express.static('public'))
+    .set('view engine', 'pug')
+    .set('views', path.join(__dirname, 'views'))
 
-// Rendering
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'))
-
-// ==============================
 //      Extra API endpoints
+// ==============================
 
 // GET @ /books/search for Searching books
 app.get('/books/search', async (req, res) => {
@@ -31,7 +27,7 @@ app.get('/books/search', async (req, res) => {
         // sqlite query with Try-Catch
         let queryResult;
         try {
-            const stmt = db.prepare('SELECT books.title, books.author, books.genre, books.price FROM books WHERE books.title LIKE ?');
+            const stmt = db.prepare('SELECT books.id, books.title, books.author, books.genre, books.price FROM books WHERE books.title LIKE ?');
             queryResult = stmt.all(query + '%');
         }
         catch (err) {
@@ -51,16 +47,10 @@ app.get('/books/search', async (req, res) => {
 
         // If no books exist from this query, print according message
         if (queryResult.length === 0) {
-            res.send(`
-            <html lang="en">
-                <head>
-                    <title> Searched for ${query} </title>
-                </head>
-                <body>
-                    <p> No results found with key ${query}. </p>
-                </body>
-            </html>
-            `);
+            res.render('result.pug', {
+                "result": `😱 Searched for '${query}' but found nothing! Try adding the book in our system!`,
+                "result_title": `Searched for ${query}`
+            })
             return;
         }
 
@@ -68,6 +58,7 @@ app.get('/books/search', async (req, res) => {
         let searchResult = [];
         queryResult.forEach((q) => {
             searchResult.push({
+                'id': q.id,
                 'author': q.author,
                 'title': q.title,
                 'genre': q.genre,
@@ -92,7 +83,7 @@ app.get('/books/search', async (req, res) => {
 //      Required API endpoints
 
 // Root website access
-app.get('/', async (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile('index.html');
 });
 
@@ -101,11 +92,8 @@ app.get('/', async (req, res) => {
 app.get('/books', async (req, res) => {
     try {
         const query = req.query.q;
-        // System logging
-        // console.log(`User searched for ${query} and asked for JSON return`)
-
         // Fetching query results from Database
-        const dbQuery = db.prepare('SELECT books.title, books.author, books.genre, books.price FROM books WHERE books.title LIKE ?').all(query + '%');
+        const dbQuery = db.prepare('SELECT books.id, books.title, books.author, books.genre, books.price FROM books WHERE books.title LIKE ?').all(query + '%');
 
         // If no results are returned, print according message
         if (dbQuery.length === 0) {
@@ -185,6 +173,4 @@ app.post('/books', async (req, res) => {
 //      End of req. API endpoints
 // ==============================
 
-
-// Listing to 8080 port
-app.listen(port, () => console.log(`Server running @ http://localhost:${port}`));
+app.listen(PORT, () => console.log(`Server open locally @ http://localhost:${PORT}`));

@@ -14,11 +14,15 @@ html
                 justify-content: center;
                 height: 90vh;
             }
-            h1, h4 {
+            h1, h4, a {
                 color: #fefae0ff;
+            }
+            a {
+                text-decoration: none;
             }
 
         title= result_title
     body
         h1= result
-        h4(onclick="window.history.go(-1);")= 'Go back ↺'
+        h4
+            a(href="#", onclick="window.history.go(-1);")= 'Go back ↺'
