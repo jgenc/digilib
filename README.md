@@ -5,6 +5,10 @@
 - [digilib.info](http://digilib.info)
 - [www.digilib.info](http://www.digilib.info)
 
+## Demo
+
+![demo](https://user-images.githubusercontent.com/65038606/173586074-a57f63a2-a762-490e-8c20-fbb24ab403aa.gif)
+
 ## Frontend
 
 - public/index.html
