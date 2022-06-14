@@ -24,8 +24,10 @@
             let addBookForm = document.getElementById('add-book-form');
             let aSearch = document.getElementById('a-search');
             let searchBookForm = document.getElementById('search-book-form');
-
             let checkJson = document.getElementById('check-json');
+
+            searchBookForm.action = `http://${location.host}/books/search`;
+            addBookForm.action = `http://${location.host}/books`
 
             aSearch.addEventListener('click', () => {
                 // If search form is hidden, make it appear
@@ -34,7 +36,6 @@
                 if (addBookForm.hidden === false) {
                     addBookForm.hidden = true;
                 }
-                searchBookForm.action = `http://${location.host}/books/search`;
             });
 
             aAdd.addEventListener('click', () => {
@@ -44,7 +45,6 @@
                 if (searchBookForm.hidden === false) {
                     searchBookForm.hidden = true;
                 }
-                addBookForm.action = `http://${location.host}/books`
             });
 
             checkJson.addEventListener('change', () => {
